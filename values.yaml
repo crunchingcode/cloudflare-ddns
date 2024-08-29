@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: favonia/cloudflare-ddns
+  tag: latest
+  pullPolicy: IfNotPresent
+
+env:
+  CF_API_TOKEN: ""
+  DOMAINS: "example.org,www.example.org"
+  PROXIED: "true"
+  IP6_PROVIDER: "none"
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+

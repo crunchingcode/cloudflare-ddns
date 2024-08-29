@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cloudflare-ddns.fullname" . }}
+  labels:
+    app: {{ include "cloudflare-ddns.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "cloudflare-ddns.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "cloudflare-ddns.name" . }}
+    spec:
+      containers:
+      - name: {{ include "cloudflare-ddns.name" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+          - name: CF_API_TOKEN
+            value: {{ .Values.env.CF_API_TOKEN | quote }}
+          - name: DOMAINS
+            value: {{ .Values.env.DOMAINS | quote }}
+          - name: PROXIED
+            value: {{ .Values.env.PROXIED | quote }}
+          - name: IP6_PROVIDER
+            value: {{ .Values.env.IP6_PROVIDER | quote }}
+        securityContext:
+          runAsUser: 1000     # User ID to run as (non-root)
+          runAsGroup: 1000    # Group ID to run as
+          runAsNonRoot: true  # Ensure that the container is not run as root
+          allowPrivilegeEscalation: false  # Disallow privilege escalation
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+      nodeSelector:
+        {{- toYaml .Values.nodeSelector | nindent 8 }}
+      tolerations:
+        {{- toYaml .Values.tolerations | nindent 8 }}
+      affinity:
+        {{- toYaml .Values.affinity | nindent 8 }}

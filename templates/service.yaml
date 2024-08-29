@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "cloudflare-ddns.fullname" . }}
+  labels:
+    app: {{ include "cloudflare-ddns.name" . }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: {{ include "cloudflare-ddns.name" . }}
