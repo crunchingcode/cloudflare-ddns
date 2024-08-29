@@ -1,20 +1,21 @@
 replicaCount: 1
 
 image:
-  repository: your-docker-repo/cloudflare-ddns
+  repository: favonia/cloudflare-ddns
   tag: latest
   pullPolicy: IfNotPresent
 
-service:
-  type: ClusterIP
-  port: 80
-  targetPort: 8080
-
 env:
-  CF_API_TOKEN: your-api-token
-  DOMAINS: your-domains
+  CF_API_TOKEN: ""
+  DOMAINS: "example.org,www.example.org"
   PROXIED: "true"
-  IP6_PROVIDER: your-ip6-provider
+  IP6_PROVIDER: "none"
 
-nameOverride: ""
-fullnameOverride: ""
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
