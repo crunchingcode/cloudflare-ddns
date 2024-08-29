@@ -15,7 +15,7 @@ spec:
         app: {{ include "cloudflare-ddns.name" . }}
     spec:
       containers:
-      - name: {{ include "cloudflare-ddns.name" . }}
+      - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
@@ -32,11 +32,5 @@ spec:
           runAsGroup: 1000    # Group ID to run as
           runAsNonRoot: true  # Ensure that the container is not run as root
           allowPrivilegeEscalation: false  # Disallow privilege escalation
-        resources:
-          {{- toYaml .Values.resources | nindent 10 }}
-      nodeSelector:
-        {{- toYaml .Values.nodeSelector | nindent 8 }}
-      tolerations:
-        {{- toYaml .Values.tolerations | nindent 8 }}
-      affinity:
-        {{- toYaml .Values.affinity | nindent 8 }}
+      securityContext:       # Add a security context at the pod level
+        fsGroup: 2000        # Group ID for mounted files
