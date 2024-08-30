@@ -5,8 +5,6 @@ metadata:
   labels:
     app: {{ include "cloudflare-ddns.name" . }}
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
+  clusterIP: None
   selector:
     app: {{ include "cloudflare-ddns.name" . }}

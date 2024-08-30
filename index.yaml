@@ -3,12 +3,12 @@ entries:
   cloudflare-ddns:
   - apiVersion: v2
     appVersion: latest
-    created: "2024-08-30T18:05:11.775577224Z"
+    created: "2024-08-30T18:29:52.410441014Z"
     description: A Helm chart for deploying Cloudflare DDNS updater
-    digest: 807bfad3ea1c76548d4e8b8be5c159d756e172cfe6ae2f6b9299620035e04f5a
+    digest: 89a23ba8de91b17ceea6e56f012b648fa5f7b63f6871a0ce01352f6506ec9bff
     name: cloudflare-ddns
     type: application
     urls:
     - https://crunchingcode.github.io/cloudflare-ddns/cloudflare-ddns-0.2.0.tgz
     version: 0.2.0
-generated: "2024-08-30T18:05:11.77517577Z"
+generated: "2024-08-30T18:29:52.410020024Z"
