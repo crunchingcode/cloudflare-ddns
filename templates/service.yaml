@@ -6,9 +6,9 @@ metadata:
     app: {{ include "cloudflare-ddns.name" . }}
   spec:
     type: {{ .Values.service.type }}
-# I dont believe the below is needed.  I had grabbed some defaults I saw in the helm howto page, but this doesn't ports or targetport
-#   ports:
-#     - port: {{ .Values.service.port }}
+    ports:
+    - port: {{ .Values.service.port }}
+# I dont believe the below is needed.  I had grabbed some defaults I saw in the helm howto page, but this doesn't need targetport.
 #       targetPort: {{ .Values.service.targetPort }}
   selector:
     app: {{ include "cloudflare-ddns.name" . }}
