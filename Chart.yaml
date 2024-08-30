@@ -2,5 +2,5 @@ apiVersion: v2
 name: cloudflare-ddns
 description: A Helm chart for deploying Cloudflare DDNS updater
 type: application
-version: 0.1.3
+version: 0.2.0
 appVersion: "latest"
