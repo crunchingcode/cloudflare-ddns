@@ -4,9 +4,9 @@ metadata:
   name: {{ include "cloudflare-ddns.fullname" . }}
   labels:
     app: {{ include "cloudflare-ddns.name" . }}
-  spec:
-    type: {{ .Values.service.type }}
-    ports:
+spec:
+  type: {{ .Values.service.type }}
+  ports:
     - port: {{ .Values.service.port }}
   selector:
     app: {{ include "cloudflare-ddns.name" . }}
