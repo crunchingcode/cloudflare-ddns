@@ -4,9 +4,9 @@ metadata:
   name: {{ include "cloudflare-ddns.fullname" . }}
   labels:
     app: {{ include "cloudflare-ddns.name" . }}
-# I dont believe the below is needed.  I had grabbed some defaults I saw in the helm howto page, but this doesn't need ingress.
-# spec:
-#   type: {{ .Values.service.type }}
+  spec:
+    type: {{ .Values.service.type }}
+# I dont believe the below is needed.  I had grabbed some defaults I saw in the helm howto page, but this doesn't ports or targetport
 #   ports:
 #     - port: {{ .Values.service.port }}
 #       targetPort: {{ .Values.service.targetPort }}
